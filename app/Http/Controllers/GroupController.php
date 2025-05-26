@@ -26,6 +26,8 @@ class GroupController extends Controller
             'is_active' => 'boolean'
         ]);
 
+        $validated['is_active'] = $request->has('is_active') ? true : false;
+
         Group::create($validated);
 
         return redirect()->route('groups.index')->with('success', 'Group created successfully.');
